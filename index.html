@@ -152,16 +152,6 @@
                         毕业于国内顶尖法学院，获法学硕士学位。拥有超过十二年的法律实务经验，专注于为您提供精准、高效、全方位的法律解决方案。以严密的逻辑思维、敏锐的法律洞察力以及出色的庭审应变能力著称，最大程度维护当事人的合法权益。
                     </p>
                     
-                    <!-- 行动号召按钮 (CTA) -->
-                    <div class="flex flex-col sm:flex-row gap-3 lg:gap-4 mb-8 lg:mb-10">
-                        <button onclick="openMessageModal()" class="bg-primary text-white px-8 py-3 lg:py-3.5 rounded-full font-medium hover:bg-secondary transition-all shadow-lg text-center flex items-center justify-center w-full sm:w-auto">
-                            <i class="fa-solid fa-phone mr-2"></i> 免费预约咨询
-                        </button>
-                        <a href="#services" class="bg-white border-2 border-gray-200 text-gray-700 px-8 py-3 lg:py-3.5 rounded-full font-medium hover:border-primary hover:text-primary transition-all text-center flex items-center justify-center w-full sm:w-auto">
-                            了解业务领域
-                        </a>
-                    </div>
-                    
                     <!-- 核心资质简述 -->
                     <div class="grid grid-cols-2 gap-4 lg:gap-6 pt-5 lg:pt-6 border-t border-gray-100">
                         <div class="flex items-center">
@@ -308,7 +298,7 @@
                         <p class="text-gray-600 text-sm mb-4 line-clamp-3">
                             代理被告方（实际控制人），面对原告蓄谋已久的连环诉讼，刘律师团队通过抽丝剥茧的证据调查，成功论证了对方证据的瑕疵，最终法院驳回原告全部诉讼请求，保住了企业的控制权。
                         </p>
-                        <div class="flex items-center text-secondary text-sm font-medium cursor-pointer">
+                        <div class="flex items-center text-secondary text-sm font-medium cursor-pointer" onclick="openCaseModal(1)">
                             了解详情 <i class="fa-solid fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
                         </div>
                     </div>
@@ -325,7 +315,7 @@
                         <p class="text-gray-600 text-sm mb-4 line-clamp-3">
                             前高管离职后窃取公司核心算法并创立竞品公司。刘律师迅速启动刑事报案与民事保全双管齐下的策略，成功固定侵权证据，最终为客户挽回直接经济损失数千万元。
                         </p>
-                        <div class="flex items-center text-secondary text-sm font-medium cursor-pointer">
+                        <div class="flex items-center text-secondary text-sm font-medium cursor-pointer" onclick="openCaseModal(2)">
                             了解详情 <i class="fa-solid fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
                         </div>
                     </div>
@@ -342,7 +332,7 @@
                         <p class="text-gray-600 text-sm mb-4 line-clamp-3">
                             代表国内供应商应对国外采购商提出的巨额违约索赔。刘律师精准指出不可抗力条款的适用性，并利用国际贸易惯例抗辩，在国际仲裁庭上获得全面胜诉，免除了国内企业的赔偿责任。
                         </p>
-                        <div class="flex items-center text-secondary text-sm font-medium cursor-pointer">
+                        <div class="flex items-center text-secondary text-sm font-medium cursor-pointer" onclick="openCaseModal(3)">
                             了解详情 <i class="fa-solid fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
                         </div>
                     </div>
@@ -488,6 +478,50 @@
                     </button>
                     <p class="text-xs text-gray-500 text-center mt-3"><i class="fa-solid fa-lock mr-1"></i> 我们承诺对您的案件信息严格保密</p>
                 </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- 案例详情阅读弹窗 (Case Details Modal) -->
+    <div id="case-modal" class="fixed inset-0 z-[80] hidden opacity-0 transition-opacity duration-300">
+        <!-- 遮罩层 -->
+        <div class="absolute inset-0 bg-black/70 backdrop-blur-sm" onclick="closeCaseModal()"></div>
+        <!-- 弹窗内容 (文章阅读模式) -->
+        <div class="absolute bottom-0 left-0 right-0 top-10 md:top-1/2 md:left-1/2 md:transform md:-translate-x-1/2 md:-translate-y-1/2 bg-white rounded-t-3xl md:rounded-2xl shadow-2xl md:w-11/12 md:max-w-4xl flex flex-col max-h-[90vh]">
+            <!-- 弹窗头部：关闭按钮 -->
+            <div class="flex justify-end p-4 border-b border-gray-100 bg-white md:rounded-t-2xl z-10 sticky top-0">
+                <button aria-label="关闭弹窗" onclick="closeCaseModal()" class="text-gray-400 hover:text-gray-600 focus:outline-none bg-gray-100 hover:bg-gray-200 rounded-full w-8 h-8 flex items-center justify-center transition-colors">
+                    <i class="fa-solid fa-xmark text-lg"></i>
+                </button>
+            </div>
+            
+            <!-- 文章滚动区域 -->
+            <div class="overflow-y-auto flex-1 custom-scrollbar p-6 md:p-10">
+                <div class="max-w-3xl mx-auto">
+                    <!-- 标签与标题 -->
+                    <div class="mb-6 text-center">
+                        <span id="case-modal-tag" class="inline-block bg-primary text-white text-xs px-3 py-1 rounded-full mb-3">领域标签</span>
+                        <h2 id="case-modal-title" class="font-serif text-2xl md:text-3xl font-bold text-primary leading-snug">案例标题加载中...</h2>
+                    </div>
+                    
+                    <!-- 头图 -->
+                    <div class="w-full h-48 md:h-80 bg-gray-100 rounded-xl overflow-hidden mb-8 shadow-inner">
+                        <img id="case-modal-img" src="" alt="案头图片" class="w-full h-full object-cover">
+                    </div>
+                    
+                    <!-- 正文内容 (模拟富文本排版) -->
+                    <div id="case-modal-content" class="prose prose-blue max-w-none text-gray-600 leading-relaxed space-y-6">
+                        <!-- 内容由JS动态填充 -->
+                    </div>
+
+                    <!-- 底部咨询引导 -->
+                    <div class="mt-12 pt-8 border-t border-gray-100 text-center">
+                        <p class="text-gray-500 mb-4">面临相似的法律困境？专业的法律策略是破局的关键。</p>
+                        <button onclick="closeCaseModal(); openMessageModal();" class="bg-primary text-white px-8 py-3 rounded-full font-medium hover:bg-secondary transition-all shadow-md">
+                            就类似问题免费咨询刘律师
+                        </button>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -638,6 +672,84 @@
             document.body.style.overflow = '';
             setTimeout(() => {
                 messageModal.classList.add('hidden');
+            }, 300);
+        }
+
+        // --- 新增：案例详情弹窗逻辑 ---
+        const caseModal = document.getElementById('case-modal');
+        
+        // 模拟案例详细数据 (实际应用中可以单独写成JSON或从数据库获取)
+        const caseData = {
+            1: {
+                title: '某大型制造企业标的5000万股权争议案',
+                tag: '公司法',
+                img: 'https://images.unsplash.com/photo-1507679799987-c73779587ccf?q=80&w=2071&auto=format&fit=crop',
+                content: `
+                    <h3 class="text-lg font-bold text-primary mb-2">案情背景</h3>
+                    <p>原告作为公司小股东，蓄谋已久，试图通过一系列连环诉讼（包括请求确认股东会决议无效、请求解散公司等）迫使实际控制人（本案被告，即我方客户）让渡公司控制权。原告提交了大量看似严密的书面证据，一审初期我方客户面临极大的败诉风险和公司被司法解散的危机。</p>
+                    <h3 class="text-lg font-bold text-primary mt-6 mb-2">办案策略与经过</h3>
+                    <p>刘静律师团队介入后，迅速对长达十年的公司财务账册和会议纪要进行了地毯式排查。通过交叉比对，团队敏锐地发现了原告几份关键证据在时间逻辑上的矛盾点，并申请了专业的文书鉴定。在庭审环节，刘律师以鉴定结果为突破口，步步紧逼，成功推翻了原告核心证据的真实性。同时，团队还向法庭充分论证了公司目前经营状况良好，完全不符合法定解散的条件。</p>
+                    <h3 class="text-lg font-bold text-primary mt-6 mb-2">案件结果</h3>
+                    <p>最终，法院全部采纳了我方的抗辩意见，依法驳回了原告的全部诉讼请求。客户成功保住了苦心经营十余年的企业控制权，避免了超5000万元的直接经济损失，并在随后的反击中促使原告以合理价格退出公司，彻底消除了公司内部的治理隐患。</p>
+                `
+            },
+            2: {
+                title: '知名互联网科技公司核心商业秘密被侵犯案',
+                tag: '知识产权',
+                img: 'https://images.unsplash.com/photo-1575505586569-646b2ca898fc?q=80&w=2026&auto=format&fit=crop',
+                content: `
+                    <h3 class="text-lg font-bold text-primary mb-2">案情背景</h3>
+                    <p>我方客户系国内某垂直领域的知名互联网科技公司，其前技术总监在离职前夕，违规下载了公司投入数千万研发的核心算法代码，并在离职后迅速设立了一家竞品公司。由于竞品公司在极短时间内推出了高度同质化的产品，并以低价恶意竞争，导致我方客户市场份额大幅流失。</p>
+                    <h3 class="text-lg font-bold text-primary mt-6 mb-2">办案策略与经过</h3>
+                    <p>鉴于商业秘密案件取证极难、且容易在民事诉讼中面临证据灭失风险，刘静律师果断采取了“刑民交叉”策略。首先，指导客户技术团队进行内部网络日志审计，固定了前高管非法下载的电子证据。随后，代表客户向公安机关进行刑事报案，并配合警方在嫌疑人办公地点当场查扣了涉案服务器。在刑事立案的强大威慑下，刘律师同步提起民事诉讼，并申请了行为保全（诉前禁令），紧急叫停了竞品公司的侵权产品销售。</p>
+                    <h3 class="text-lg font-bold text-primary mt-6 mb-2">案件结果</h3>
+                    <p>在铁证面前，被告方最终选择妥协。经法院主持调解，被告立即销毁全部侵权代码，公开赔礼道歉，并向我方客户支付了高达上千万元的经济赔偿金。该案被当地知识产权法院评为当年“十大商业秘密保护典型案例”。</p>
+                `
+            },
+            3: {
+                title: '跨国贸易巨额违约索赔仲裁案胜诉',
+                tag: '商事合同',
+                img: 'https://images.unsplash.com/photo-1450101499163-c8848c66ca85?q=80&w=2070&auto=format&fit=crop',
+                content: `
+                    <h3 class="text-lg font-bold text-primary mb-2">案情背景</h3>
+                    <p>国内某大型出口供应商（我方客户）与欧洲某采购商签订了长期的供货合同。受全球突发公共卫生事件及国际航运瘫痪影响，我方客户无法按期交货。采购商以此为由，向国际商会（ICC）国际仲裁院提起仲裁，要求我方客户赔偿因违约导致的停工损失及利润损失折合人民币约8000万元。</p>
+                    <h3 class="text-lg font-bold text-primary mt-6 mb-2">办案策略与经过</h3>
+                    <p>面对外方来势汹汹的巨额索赔和复杂的国际仲裁规则，刘静律师牵头组建了涉外法律工作组。团队深研合同条款及适用的《联合国国际货物销售合同公约》（CISG），准确指出本次疫情及航运阻断构成了法律意义上的“不可抗力”及“情势变更”。刘律师团队收集了海量的官方通报、航运公司停航通知等证据链条，并在全英文的仲裁庭审中，以雄辩的口才和严密的国际贸易惯例逻辑，强力反驳了外方专家的索赔金额计算模型。</p>
+                    <h3 class="text-lg font-bold text-primary mt-6 mb-2">案件结果</h3>
+                    <p>国际仲裁庭最终作出了对我方极为有利的裁决，认定不可抗力事由成立，免除我方客户绝大部分的迟延交货违约责任，仅需退还尚未履行的部分货款，驳回了外方关于8000万元利润损失的全部索赔诉求。此案不仅挽救了企业的资金链，也为国内企业应对涉外不可抗力纠纷提供了教科书式的参考。</p>
+                `
+            }
+        };
+
+        function openCaseModal(id) {
+            const data = caseData[id];
+            if(!data) return;
+
+            // 填充数据
+            document.getElementById('case-modal-tag').innerText = data.tag;
+            document.getElementById('case-modal-title').innerText = data.title;
+            document.getElementById('case-modal-img').src = data.img;
+            document.getElementById('case-modal-content').innerHTML = data.content;
+
+            // 显示弹窗
+            caseModal.classList.remove('hidden');
+            // 防止背景页面滚动
+            document.body.style.overflow = 'hidden'; 
+            
+            setTimeout(() => {
+                caseModal.classList.remove('opacity-0');
+            }, 10);
+        }
+
+        function closeCaseModal() {
+            caseModal.classList.add('opacity-0');
+            // 恢复背景页面滚动
+            document.body.style.overflow = '';
+            
+            setTimeout(() => {
+                caseModal.classList.add('hidden');
+                // 清空内容避免下次打开时闪烁旧内容
+                document.getElementById('case-modal-content').innerHTML = '';
             }, 300);
         }
     </script>
