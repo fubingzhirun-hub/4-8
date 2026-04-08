@@ -403,8 +403,8 @@
                         </div>
                     </div>
 
-                    <!-- 留言表单 -->
-                    <div class="lg:w-3/5 p-8 sm:p-10 lg:p-14">
+                    <!-- 桌面端留言表单 (保持原样，供电脑访客使用) -->
+                    <div class="lg:w-3/5 p-8 sm:p-10 lg:p-14 hidden lg:block">
                         <h3 class="font-serif text-2xl font-bold text-primary mb-6">在线案件评估</h3>
                         <form action="#" method="POST" class="space-y-6" onsubmit="event.preventDefault(); alert('留言已提交成功，刘律师助理将尽快与您联系！');">
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -441,6 +441,16 @@
                             <p class="text-xs text-gray-500 text-center mt-4"><i class="fa-solid fa-lock mr-1"></i> 我们承诺对您的案件信息严格保密</p>
                         </form>
                     </div>
+                    
+                    <!-- 移动端引导点击 (当原表单被隐藏时的占位提示) -->
+                    <div class="lg:hidden p-8 text-center bg-gray-50 flex flex-col items-center justify-center">
+                        <i class="fa-solid fa-pen-to-square text-4xl text-gray-300 mb-3"></i>
+                        <h3 class="font-serif text-xl font-bold text-primary mb-2">需要法律帮助？</h3>
+                        <p class="text-gray-500 text-sm mb-6">点击下方“在线留言”按钮，填写您的需求，我们将尽快与您联系。</p>
+                        <button onclick="openMessageModal()" class="bg-primary text-white px-8 py-3 rounded-full font-medium shadow-md">
+                            立即在线留言
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -465,7 +475,7 @@
         <div class="absolute inset-0 bg-black/60 backdrop-blur-sm" onclick="closeWechatModal()"></div>
         <!-- 弹窗内容 -->
         <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white rounded-2xl shadow-2xl p-8 w-11/12 max-w-sm text-center">
-            <button aria-label="关闭弹窗" onclick="closeWechatModal()" class="absolute top-4 right-4 text-gray-400 hover:text-gray-600 focus:outline-none">
+            <button aria-label="关闭弹窗" onclick="closeWechatModal()" class="absolute top-4 right-4 text-gray-400 hover:text-gray-600 focus:outline-none z-10">
                 <i class="fa-solid fa-xmark text-xl"></i>
             </button>
             <h3 class="font-serif text-2xl font-bold text-primary mb-2">添加律师微信</h3>
@@ -486,6 +496,54 @@
         </div>
     </div>
 
+    <!-- 移动端在线留言弹窗 (Message Form Modal) -->
+    <div id="message-modal" class="fixed inset-0 z-[70] hidden opacity-0 transition-opacity duration-300">
+        <!-- 遮罩层 -->
+        <div class="absolute inset-0 bg-black/60 backdrop-blur-sm" onclick="closeMessageModal()"></div>
+        <!-- 弹窗内容 (模拟新页面/半屏卡片) -->
+        <div class="absolute bottom-0 left-0 right-0 top-16 md:top-1/2 md:left-1/2 md:transform md:-translate-x-1/2 md:-translate-y-1/2 bg-white rounded-t-3xl md:rounded-2xl shadow-2xl p-6 md:p-10 md:w-11/12 md:max-w-lg flex flex-col">
+            <button aria-label="关闭弹窗" onclick="closeMessageModal()" class="absolute top-5 right-5 text-gray-400 hover:text-gray-600 focus:outline-none z-10">
+                <i class="fa-solid fa-xmark text-2xl"></i>
+            </button>
+            
+            <h3 class="font-serif text-2xl font-bold text-primary mb-6 text-center">在线案件评估</h3>
+            
+            <!-- 表单区域 -->
+            <div class="overflow-y-auto flex-1 custom-scrollbar pb-safe">
+                <form action="#" method="POST" class="space-y-5" onsubmit="event.preventDefault(); alert('留言已提交成功，刘律师助理将尽快与您联系！'); closeMessageModal();">
+                    <div>
+                        <label for="modal-name" class="block text-sm font-medium text-gray-700 mb-1.5">您的称呼 *</label>
+                        <input type="text" id="modal-name" class="w-full px-4 py-3 text-base border border-gray-300 rounded-xl focus:ring-2 focus:ring-secondary focus:border-secondary outline-none transition-all" required placeholder="如：张先生">
+                    </div>
+                    <div>
+                        <label for="modal-phone" class="block text-sm font-medium text-gray-700 mb-1.5">联系电话 *</label>
+                        <input type="tel" id="modal-phone" class="w-full px-4 py-3 text-base border border-gray-300 rounded-xl focus:ring-2 focus:ring-secondary focus:border-secondary outline-none transition-all" required placeholder="请输入您的手机号">
+                    </div>
+                    <div>
+                        <label for="modal-service" class="block text-sm font-medium text-gray-700 mb-1.5">咨询领域</label>
+                        <select id="modal-service" class="w-full px-4 py-3 text-base border border-gray-300 rounded-xl focus:ring-2 focus:ring-secondary focus:border-secondary outline-none transition-all bg-white">
+                            <option value="">请选择相关领域...</option>
+                            <option value="corporate">公司合规/股权争议</option>
+                            <option value="litigation">民商事诉讼</option>
+                            <option value="family">婚姻家事</option>
+                            <option value="ip">知识产权</option>
+                            <option value="other">其他</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="modal-message" class="block text-sm font-medium text-gray-700 mb-1.5">案情简述 *</label>
+                        <textarea id="modal-message" rows="4" class="w-full px-4 py-3 text-base border border-gray-300 rounded-xl focus:ring-2 focus:ring-secondary focus:border-secondary outline-none transition-all resize-none" required placeholder="请简单描述您遇到的法律问题..."></textarea>
+                    </div>
+
+                    <button type="submit" class="w-full bg-primary text-white font-bold py-4 rounded-xl hover:bg-secondary transition-colors duration-300 shadow-md mt-2">
+                        发送咨询请求
+                    </button>
+                    <p class="text-xs text-gray-500 text-center mt-3"><i class="fa-solid fa-lock mr-1"></i> 我们承诺对您的案件信息严格保密</p>
+                </form>
+            </div>
+        </div>
+    </div>
+
     <!-- 移动端底部悬浮操作栏 (Mobile Sticky CTA) -->
     <div class="md:hidden fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 shadow-[0_-5px_15px_rgba(0,0,0,0.05)] z-50 flex pb-safe items-center">
         <a href="tel:4008888888" class="flex-1 py-3 flex flex-col items-center justify-center text-primary hover:bg-gray-50 active:bg-gray-100 transition-colors">
@@ -493,13 +551,12 @@
             <span class="text-[11px] font-medium mt-0.5">一键拨打</span>
         </a>
         <div class="w-px h-8 bg-gray-200"></div>
-        <!-- 修改为触发弹窗 -->
         <a href="javascript:void(0)" onclick="openWechatModal()" class="flex-1 py-3 flex flex-col items-center justify-center text-green-600 hover:bg-gray-50 active:bg-gray-100 transition-colors">
             <i class="fa-brands fa-weixin text-xl mb-1"></i>
             <span class="text-[11px] font-medium mt-0.5">微信咨询</span>
         </a>
-        <!-- 修改为聚焦输入框 -->
-        <a href="#contact" onclick="focusContactForm()" class="flex-none w-32 bg-primary text-white py-3.5 flex flex-col items-center justify-center shadow-lg active:bg-primary/90 transition-colors h-full">
+        <!-- 修改为触发新页面体验的弹窗 -->
+        <a href="javascript:void(0)" onclick="openMessageModal()" class="flex-none w-32 bg-primary text-white py-3.5 flex flex-col items-center justify-center shadow-lg active:bg-primary/90 transition-colors h-full">
             <i class="fa-solid fa-pen-to-square text-lg mb-0.5"></i>
             <span class="font-bold text-[13px]">在线留言</span>
         </a>
@@ -585,12 +642,11 @@
         // 初始化执行一次
         reveal();
 
-        // --- 新增：微信弹窗与复制逻辑 ---
+        // --- 微信弹窗逻辑 ---
         const wechatModal = document.getElementById('wechat-modal');
         
         function openWechatModal() {
             wechatModal.classList.remove('hidden');
-            // 短暂延迟以触发 CSS 透明度过渡动画
             setTimeout(() => {
                 wechatModal.classList.remove('opacity-0');
             }, 10);
@@ -600,12 +656,11 @@
             wechatModal.classList.add('opacity-0');
             setTimeout(() => {
                 wechatModal.classList.add('hidden');
-            }, 300); // 300ms 与 transition-opacity duration 保持一致
+            }, 300);
         }
 
         function copyWechatId() {
             const wechatId = document.getElementById('wechat-id').innerText;
-            // 创建一个临时输入框来实现兼容性更好的复制功能
             const tempInput = document.createElement("input");
             tempInput.value = wechatId;
             document.body.appendChild(tempInput);
@@ -613,17 +668,29 @@
             document.execCommand("copy");
             document.body.removeChild(tempInput);
             
-            // 使用简单的提示语反馈给用户
             alert('微信号已复制成功！请打开微信添加好友。');
             closeWechatModal();
         }
 
-        // --- 新增：聚焦留言表单逻辑 ---
-        function focusContactForm() {
-            // 设置 500ms 延迟，等待平滑滚动（scroll-smooth）到达底部后再自动聚焦唤起键盘
+        // --- 新增：在线留言表单弹窗逻辑 ---
+        const messageModal = document.getElementById('message-modal');
+
+        function openMessageModal() {
+            messageModal.classList.remove('hidden');
+            // 防止背景页面滚动
+            document.body.style.overflow = 'hidden'; 
             setTimeout(() => {
-                document.getElementById('name').focus();
-            }, 500);
+                messageModal.classList.remove('opacity-0');
+            }, 10);
+        }
+
+        function closeMessageModal() {
+            messageModal.classList.add('opacity-0');
+            // 恢复背景页面滚动
+            document.body.style.overflow = '';
+            setTimeout(() => {
+                messageModal.classList.add('hidden');
+            }, 300);
         }
     </script>
 </body>
