@@ -117,66 +117,66 @@
     </header>
 
     <!-- 首屏：个人简介与核心信息融合 (Profile & Hero) -->
-    <section id="profile" class="pt-32 pb-20 bg-gradient-to-b from-light to-white relative overflow-hidden">
+    <section id="profile" class="pt-24 lg:pt-32 pb-16 lg:pb-20 bg-gradient-to-b from-light to-white relative overflow-hidden">
         <!-- 装饰性背景元素 -->
         <div class="absolute top-0 right-0 -mr-20 -mt-20 w-96 h-96 rounded-full bg-secondary/5 blur-3xl pointer-events-none"></div>
         <div class="absolute bottom-0 left-0 -ml-20 -mb-20 w-80 h-80 rounded-full bg-primary/5 blur-3xl pointer-events-none"></div>
 
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div class="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
+            <div class="flex flex-col lg:flex-row items-center gap-8 lg:gap-20">
                 
-                <!-- 左侧：文本信息 (手机端在上) -->
-                <div class="lg:w-1/2 reveal active order-1">
-                    <div class="inline-flex items-center px-4 py-1.5 bg-primary/5 text-primary font-semibold rounded-full text-sm mb-6 border border-primary/10">
+                <!-- 照片 (手机端调至首位显示，确保一打开网页就能看到) -->
+                <div class="lg:w-1/2 reveal active order-1 lg:order-2 relative w-full max-w-md mx-auto lg:max-w-none">
+                    <!-- 背景装饰框 -->
+                    <div class="absolute -inset-4 bg-secondary/10 rounded-2xl transform rotate-3 transition-transform duration-500 hover:rotate-1"></div>
+                    <!-- 照片 -->
+                    <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=1974&auto=format&fit=crop" alt="刘静律师专业形象照" class="relative rounded-2xl shadow-2xl object-cover h-[280px] sm:h-[450px] lg:h-[600px] w-full object-top border-4 border-white">
+                </div>
+
+                <!-- 左侧文本信息 (手机端调至照片下方) -->
+                <div class="lg:w-1/2 reveal active order-2 lg:order-1 mt-4 lg:mt-0">
+                    <div class="inline-flex items-center px-4 py-1.5 bg-primary/5 text-primary font-semibold rounded-full text-sm mb-4 lg:mb-6 border border-primary/10">
                         <span class="w-2 h-2 rounded-full bg-secondary mr-2"></span>
                         高级合伙人 / 资深出庭律师
                     </div>
                     
-                    <h1 class="font-serif text-4xl md:text-5xl lg:text-6xl font-bold text-primary mb-4 leading-tight tracking-wide">
-                        刘静 <span class="text-2xl md:text-3xl text-gray-500 font-sans font-normal ml-1">律师</span>
+                    <h1 class="font-serif text-3xl md:text-5xl lg:text-6xl font-bold text-primary mb-3 lg:mb-4 leading-tight tracking-wide">
+                        刘静 <span class="text-xl md:text-3xl text-gray-500 font-sans font-normal ml-1">律师</span>
                     </h1>
                     
-                    <h2 class="text-xl md:text-2xl text-secondary font-serif mb-6 font-medium">秉持正义之心，铸就专业之刃</h2>
+                    <h2 class="text-lg md:text-2xl text-secondary font-serif mb-4 lg:mb-6 font-medium">秉持正义之心，铸就专业之刃</h2>
                     
-                    <p class="text-gray-600 leading-relaxed text-lg mb-8 max-w-2xl">
+                    <p class="text-gray-600 leading-relaxed text-base lg:text-lg mb-6 lg:mb-8 max-w-2xl">
                         毕业于国内顶尖法学院，获法学硕士学位。拥有超过十二年的法律实务经验，专注于为您提供精准、高效、全方位的法律解决方案。以严密的逻辑思维、敏锐的法律洞察力以及出色的庭审应变能力著称，最大程度维护当事人的合法权益。
                     </p>
                     
                     <!-- 行动号召按钮 (CTA) -->
-                    <div class="flex flex-col sm:flex-row gap-4 mb-10">
-                        <a href="#contact" class="bg-primary text-white px-8 py-3.5 rounded-full font-medium hover:bg-secondary transition-all shadow-lg text-center flex items-center justify-center w-full sm:w-auto">
+                    <div class="flex flex-col sm:flex-row gap-3 lg:gap-4 mb-8 lg:mb-10">
+                        <a href="#contact" class="bg-primary text-white px-8 py-3 lg:py-3.5 rounded-full font-medium hover:bg-secondary transition-all shadow-lg text-center flex items-center justify-center w-full sm:w-auto">
                             <i class="fa-solid fa-phone mr-2"></i> 免费预约咨询
                         </a>
-                        <a href="#services" class="bg-white border-2 border-gray-200 text-gray-700 px-8 py-3.5 rounded-full font-medium hover:border-primary hover:text-primary transition-all text-center flex items-center justify-center w-full sm:w-auto">
+                        <a href="#services" class="bg-white border-2 border-gray-200 text-gray-700 px-8 py-3 lg:py-3.5 rounded-full font-medium hover:border-primary hover:text-primary transition-all text-center flex items-center justify-center w-full sm:w-auto">
                             了解业务领域
                         </a>
                     </div>
                     
                     <!-- 核心资质简述 -->
-                    <div class="grid grid-cols-2 gap-6 pt-6 border-t border-gray-100">
+                    <div class="grid grid-cols-2 gap-4 lg:gap-6 pt-5 lg:pt-6 border-t border-gray-100">
                         <div class="flex items-center">
-                            <i class="fa-solid fa-graduation-cap text-secondary text-2xl w-10"></i>
+                            <i class="fa-solid fa-graduation-cap text-secondary text-xl lg:text-2xl w-8 lg:w-10"></i>
                             <div>
                                 <h4 class="font-bold text-primary text-sm md:text-base">某知名政法大学</h4>
                                 <p class="text-xs md:text-sm text-gray-500">法学硕士</p>
                             </div>
                         </div>
                         <div class="flex items-center">
-                            <i class="fa-solid fa-briefcase text-secondary text-2xl w-10"></i>
+                            <i class="fa-solid fa-briefcase text-secondary text-xl lg:text-2xl w-8 lg:w-10"></i>
                             <div>
                                 <h4 class="font-bold text-primary text-sm md:text-base">12年执业经验</h4>
                                 <p class="text-xs md:text-sm text-gray-500">上百起胜诉案例</p>
                             </div>
                         </div>
                     </div>
-                </div>
-
-                <!-- 右侧：专业形象照 (手机端在下) -->
-                <div class="lg:w-1/2 reveal active order-2 relative w-full max-w-md mx-auto lg:max-w-none">
-                    <!-- 背景装饰框 -->
-                    <div class="absolute -inset-4 bg-secondary/10 rounded-2xl transform rotate-3 transition-transform duration-500 hover:rotate-1"></div>
-                    <!-- 照片 -->
-                    <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=1974&auto=format&fit=crop" alt="刘静律师专业形象照" class="relative rounded-2xl shadow-2xl object-cover h-[350px] sm:h-[450px] lg:h-[600px] w-full object-top border-4 border-white">
                 </div>
                 
             </div>
@@ -235,13 +235,9 @@
     <section id="honors" class="py-16 lg:py-20 bg-primary text-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex flex-col md:flex-row items-center gap-12">
-                <div class="md:w-1/3 reveal">
+                <div class="md:w-1/3 reveal mb-4 md:mb-0">
                     <h2 class="font-serif text-3xl md:text-4xl font-bold mb-4">荣誉与资质</h2>
-                    <div class="w-16 h-1 bg-secondary mb-8"></div>
-                    <div class="bg-white/10 p-6 rounded-lg border border-white/20 backdrop-blur-sm">
-                        <i class="fa-solid fa-quote-left text-secondary text-3xl mb-4"></i>
-                        <p class="italic text-gray-200">“法律的生命不在于逻辑，而在于经验。我们用丰富的经验，为您筑起最坚固的防线。”</p>
-                    </div>
+                    <div class="w-16 h-1 bg-secondary"></div>
                 </div>
                 
                 <div class="md:w-2/3 grid grid-cols-1 sm:grid-cols-2 gap-6 reveal delay-100">
@@ -364,11 +360,8 @@
 
             <div class="bg-white rounded-2xl shadow-xl overflow-hidden reveal delay-100">
                 <div class="flex flex-col lg:flex-row">
-                    <!-- 联系信息 -->
-                    <div class="lg:w-2/5 bg-primary text-white p-8 sm:p-10 lg:p-14">
-                        <h2 class="font-serif text-3xl font-bold mb-6">与刘律师取得联系</h2>
-                        <p class="text-gray-300 mb-10 leading-relaxed">无论您面临何种法律困境，请随时联系我们。我们将为您提供保密、专业的初步法律建议。</p>
-                        
+                    <!-- 联系信息 (去除了标题，改为垂直居中) -->
+                    <div class="lg:w-2/5 bg-primary text-white p-8 sm:p-10 lg:p-14 flex flex-col justify-center">
                         <div class="space-y-6">
                             <div class="flex items-start">
                                 <i class="fa-solid fa-location-dot text-secondary text-xl mt-1 w-8"></i>
@@ -464,6 +457,33 @@
         </div>
     </footer>
 
+    <!-- 微信咨询弹窗 (WeChat Modal) -->
+    <div id="wechat-modal" class="fixed inset-0 z-[60] hidden opacity-0 transition-opacity duration-300">
+        <!-- 遮罩层 -->
+        <div class="absolute inset-0 bg-black/60 backdrop-blur-sm" onclick="closeWechatModal()"></div>
+        <!-- 弹窗内容 -->
+        <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white rounded-2xl shadow-2xl p-8 w-11/12 max-w-sm text-center">
+            <button onclick="closeWechatModal()" class="absolute top-4 right-4 text-gray-400 hover:text-gray-600 focus:outline-none">
+                <i class="fa-solid fa-xmark text-xl"></i>
+            </button>
+            <h3 class="font-serif text-2xl font-bold text-primary mb-2">添加律师微信</h3>
+            <p class="text-gray-500 text-sm mb-6">扫码或复制微信号，随时沟通</p>
+            
+            <!-- 二维码占位 -->
+            <div class="w-48 h-48 mx-auto bg-gray-50 border border-gray-200 rounded-xl flex items-center justify-center mb-6">
+                <i class="fa-brands fa-weixin text-7xl text-green-500"></i>
+            </div>
+            
+            <!-- 微信号与复制按钮 -->
+            <div class="bg-light border border-gray-200 rounded-lg p-3 flex items-center justify-between mb-2">
+                <span class="text-gray-600 text-sm">微信号：<span id="wechat-id" class="font-bold text-primary tracking-wider">liujing_lawyer</span></span>
+                <button onclick="copyWechatId()" class="text-white bg-green-500 hover:bg-green-600 px-4 py-1.5 rounded-md text-sm font-bold transition-colors shadow-sm">
+                    复制
+                </button>
+            </div>
+        </div>
+    </div>
+
     <!-- 移动端底部悬浮操作栏 (Mobile Sticky CTA) -->
     <div class="md:hidden fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 shadow-[0_-5px_15px_rgba(0,0,0,0.05)] z-50 flex pb-safe items-center">
         <a href="tel:4008888888" class="flex-1 py-3 flex flex-col items-center justify-center text-primary hover:bg-gray-50 active:bg-gray-100 transition-colors">
@@ -471,11 +491,13 @@
             <span class="text-[11px] font-medium mt-0.5">一键拨打</span>
         </a>
         <div class="w-px h-8 bg-gray-200"></div>
-        <a href="#contact" class="flex-1 py-3 flex flex-col items-center justify-center text-green-600 hover:bg-gray-50 active:bg-gray-100 transition-colors">
+        <!-- 修改为触发弹窗 -->
+        <a href="javascript:void(0)" onclick="openWechatModal()" class="flex-1 py-3 flex flex-col items-center justify-center text-green-600 hover:bg-gray-50 active:bg-gray-100 transition-colors">
             <i class="fa-brands fa-weixin text-xl mb-1"></i>
             <span class="text-[11px] font-medium mt-0.5">微信咨询</span>
         </a>
-        <a href="#contact" class="flex-none w-32 bg-primary text-white py-3.5 flex flex-col items-center justify-center shadow-lg active:bg-primary/90 transition-colors h-full">
+        <!-- 修改为聚焦输入框 -->
+        <a href="#contact" onclick="focusContactForm()" class="flex-none w-32 bg-primary text-white py-3.5 flex flex-col items-center justify-center shadow-lg active:bg-primary/90 transition-colors h-full">
             <i class="fa-solid fa-pen-to-square text-lg mb-0.5"></i>
             <span class="font-bold text-[13px]">在线留言</span>
         </a>
@@ -560,6 +582,47 @@
         window.addEventListener("scroll", reveal);
         // 初始化执行一次
         reveal();
+
+        // --- 新增：微信弹窗与复制逻辑 ---
+        const wechatModal = document.getElementById('wechat-modal');
+        
+        function openWechatModal() {
+            wechatModal.classList.remove('hidden');
+            // 短暂延迟以触发 CSS 透明度过渡动画
+            setTimeout(() => {
+                wechatModal.classList.remove('opacity-0');
+            }, 10);
+        }
+
+        function closeWechatModal() {
+            wechatModal.classList.add('opacity-0');
+            setTimeout(() => {
+                wechatModal.classList.add('hidden');
+            }, 300); // 300ms 与 transition-opacity duration 保持一致
+        }
+
+        function copyWechatId() {
+            const wechatId = document.getElementById('wechat-id').innerText;
+            // 创建一个临时输入框来实现兼容性更好的复制功能
+            const tempInput = document.createElement("input");
+            tempInput.value = wechatId;
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            document.execCommand("copy");
+            document.body.removeChild(tempInput);
+            
+            // 使用简单的提示语反馈给用户
+            alert('微信号已复制成功！请打开微信添加好友。');
+            closeWechatModal();
+        }
+
+        // --- 新增：聚焦留言表单逻辑 ---
+        function focusContactForm() {
+            // 设置 500ms 延迟，等待平滑滚动（scroll-smooth）到达底部后再自动聚焦唤起键盘
+            setTimeout(() => {
+                document.getElementById('name').focus();
+            }, 500);
+        }
     </script>
 </body>
 </html>
