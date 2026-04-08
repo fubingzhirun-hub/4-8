@@ -58,6 +58,13 @@
         .animate-float {
             animation: float 4s ease-in-out infinite;
         }
+
+        /* 适配 iOS 底部安全区 */
+        @supports (padding-bottom: env(safe-area-inset-bottom)) {
+            .pb-safe {
+                padding-bottom: env(safe-area-inset-bottom);
+            }
+        }
     </style>
 </head>
 <body class="font-sans text-gray-800 bg-white antialiased selection:bg-secondary selection:text-white">
@@ -90,7 +97,7 @@
 
                 <!-- 移动端菜单按钮 -->
                 <div class="md:hidden flex items-center">
-                    <button id="mobile-menu-btn" class="text-gray-600 hover:text-primary focus:outline-none">
+                    <button id="mobile-menu-btn" class="text-gray-600 hover:text-primary focus:outline-none p-2">
                         <i class="fa-solid fa-bars text-2xl"></i>
                     </button>
                 </div>
@@ -98,13 +105,13 @@
         </div>
 
         <!-- 移动端菜单下拉 -->
-        <div id="mobile-menu" class="hidden md:hidden bg-white shadow-lg absolute w-full">
-            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-                <a href="#profile" class="mobile-nav-link block px-3 py-2 text-gray-700 hover:text-secondary hover:bg-gray-50 rounded-md">个人简介</a>
-                <a href="#services" class="mobile-nav-link block px-3 py-2 text-gray-700 hover:text-secondary hover:bg-gray-50 rounded-md">业务领域</a>
-                <a href="#honors" class="mobile-nav-link block px-3 py-2 text-gray-700 hover:text-secondary hover:bg-gray-50 rounded-md">荣誉资质</a>
-                <a href="#cases" class="mobile-nav-link block px-3 py-2 text-gray-700 hover:text-secondary hover:bg-gray-50 rounded-md">案例分享</a>
-                <a href="#contact" class="mobile-nav-link block px-3 py-2 text-gray-700 hover:text-secondary hover:bg-gray-50 rounded-md">联系方式</a>
+        <div id="mobile-menu" class="hidden md:hidden bg-white shadow-lg absolute w-full border-t border-gray-100">
+            <div class="px-4 pt-2 pb-4 space-y-2">
+                <a href="#profile" class="mobile-nav-link block px-4 py-3.5 text-base font-medium text-gray-700 hover:text-secondary hover:bg-gray-50 rounded-lg transition-colors">个人简介</a>
+                <a href="#services" class="mobile-nav-link block px-4 py-3.5 text-base font-medium text-gray-700 hover:text-secondary hover:bg-gray-50 rounded-lg transition-colors">业务领域</a>
+                <a href="#honors" class="mobile-nav-link block px-4 py-3.5 text-base font-medium text-gray-700 hover:text-secondary hover:bg-gray-50 rounded-lg transition-colors">荣誉资质</a>
+                <a href="#cases" class="mobile-nav-link block px-4 py-3.5 text-base font-medium text-gray-700 hover:text-secondary hover:bg-gray-50 rounded-lg transition-colors">案例分享</a>
+                <a href="#contact" class="mobile-nav-link block px-4 py-3.5 text-base font-medium text-gray-700 hover:text-secondary hover:bg-gray-50 rounded-lg transition-colors">联系方式</a>
             </div>
         </div>
     </header>
@@ -137,10 +144,10 @@
                     
                     <!-- 行动号召按钮 (CTA) -->
                     <div class="flex flex-col sm:flex-row gap-4 mb-10">
-                        <a href="#contact" class="bg-primary text-white px-8 py-3.5 rounded-full font-medium hover:bg-secondary transition-all shadow-lg text-center flex items-center justify-center">
+                        <a href="#contact" class="bg-primary text-white px-8 py-3.5 rounded-full font-medium hover:bg-secondary transition-all shadow-lg text-center flex items-center justify-center w-full sm:w-auto">
                             <i class="fa-solid fa-phone mr-2"></i> 免费预约咨询
                         </a>
-                        <a href="#services" class="bg-white border-2 border-gray-200 text-gray-700 px-8 py-3.5 rounded-full font-medium hover:border-primary hover:text-primary transition-all text-center flex items-center justify-center">
+                        <a href="#services" class="bg-white border-2 border-gray-200 text-gray-700 px-8 py-3.5 rounded-full font-medium hover:border-primary hover:text-primary transition-all text-center flex items-center justify-center w-full sm:w-auto">
                             了解业务领域
                         </a>
                     </div>
@@ -169,7 +176,7 @@
                     <!-- 背景装饰框 -->
                     <div class="absolute -inset-4 bg-secondary/10 rounded-2xl transform rotate-3 transition-transform duration-500 hover:rotate-1"></div>
                     <!-- 照片 -->
-                    <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=1974&auto=format&fit=crop" alt="刘静律师专业形象照" class="relative rounded-2xl shadow-2xl object-cover h-[450px] lg:h-[600px] w-full object-top border-4 border-white">
+                    <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=1974&auto=format&fit=crop" alt="刘静律师专业形象照" class="relative rounded-2xl shadow-2xl object-cover h-[350px] sm:h-[450px] lg:h-[600px] w-full object-top border-4 border-white">
                 </div>
                 
             </div>
@@ -352,12 +359,12 @@
     </section>
 
     <!-- 联系方式 (Contact) -->
-    <section id="contact" class="py-24 bg-light relative">
+    <section id="contact" class="py-16 md:py-24 bg-light relative">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="bg-white rounded-2xl shadow-xl overflow-hidden reveal">
                 <div class="flex flex-col lg:flex-row">
                     <!-- 联系信息 -->
-                    <div class="lg:w-2/5 bg-primary text-white p-10 lg:p-14">
+                    <div class="lg:w-2/5 bg-primary text-white p-8 sm:p-10 lg:p-14">
                         <h2 class="font-serif text-3xl font-bold mb-6">与刘律师取得联系</h2>
                         <p class="text-gray-300 mb-10 leading-relaxed">无论您面临何种法律困境，请随时联系我们。我们将为您提供保密、专业的初步法律建议。</p>
                         
@@ -401,23 +408,23 @@
                     </div>
 
                     <!-- 留言表单 -->
-                    <div class="lg:w-3/5 p-10 lg:p-14">
+                    <div class="lg:w-3/5 p-8 sm:p-10 lg:p-14">
                         <h3 class="font-serif text-2xl font-bold text-primary mb-6">在线案件评估</h3>
                         <form action="#" method="POST" class="space-y-6" onsubmit="event.preventDefault(); alert('留言已提交成功，刘律师助理将尽快与您联系！');">
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                                 <div>
                                     <label for="name" class="block text-sm font-medium text-gray-700 mb-2">您的称呼 *</label>
-                                    <input type="text" id="name" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-secondary focus:border-secondary outline-none transition-all" required placeholder="如：张先生">
+                                    <input type="text" id="name" class="w-full px-4 py-3 text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-secondary focus:border-secondary outline-none transition-all" required placeholder="如：张先生">
                                 </div>
                                 <div>
                                     <label for="phone" class="block text-sm font-medium text-gray-700 mb-2">联系电话 *</label>
-                                    <input type="tel" id="phone" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-secondary focus:border-secondary outline-none transition-all" required placeholder="请输入您的手机号">
+                                    <input type="tel" id="phone" class="w-full px-4 py-3 text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-secondary focus:border-secondary outline-none transition-all" required placeholder="请输入您的手机号">
                                 </div>
                             </div>
                             
                             <div>
                                 <label for="service" class="block text-sm font-medium text-gray-700 mb-2">咨询领域</label>
-                                <select id="service" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-secondary focus:border-secondary outline-none transition-all bg-white">
+                                <select id="service" class="w-full px-4 py-3 text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-secondary focus:border-secondary outline-none transition-all bg-white">
                                     <option value="">请选择相关领域...</option>
                                     <option value="corporate">公司合规/股权争议</option>
                                     <option value="litigation">民商事诉讼</option>
@@ -429,7 +436,7 @@
 
                             <div>
                                 <label for="message" class="block text-sm font-medium text-gray-700 mb-2">案情简述 *</label>
-                                <textarea id="message" rows="4" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-secondary focus:border-secondary outline-none transition-all resize-none" required placeholder="请简单描述您遇到的法律问题..."></textarea>
+                                <textarea id="message" rows="4" class="w-full px-4 py-3 text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-secondary focus:border-secondary outline-none transition-all resize-none" required placeholder="请简单描述您遇到的法律问题..."></textarea>
                             </div>
 
                             <button type="submit" class="w-full bg-primary text-white font-bold py-4 rounded-lg hover:bg-secondary transition-colors duration-300 shadow-md">
@@ -444,7 +451,7 @@
     </section>
 
     <!-- 页脚 -->
-    <footer class="bg-dark text-gray-400 py-10 text-center border-t border-gray-800">
+    <footer class="bg-dark text-gray-400 py-10 pb-28 md:pb-10 text-center border-t border-gray-800">
         <div class="max-w-7xl mx-auto px-4">
             <div class="flex justify-center space-x-6 mb-6">
                 <a href="#" class="text-gray-400 hover:text-white transition-colors"><i class="fa-brands fa-weixin text-xl"></i></a>
@@ -455,6 +462,23 @@
             <p class="text-sm">法律声明 | 隐私政策 | 京ICP备12345678号-1</p>
         </div>
     </footer>
+
+    <!-- 移动端底部悬浮操作栏 (Mobile Sticky CTA) -->
+    <div class="md:hidden fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 shadow-[0_-5px_15px_rgba(0,0,0,0.05)] z-50 flex pb-safe items-center">
+        <a href="tel:4008888888" class="flex-1 py-3 flex flex-col items-center justify-center text-primary hover:bg-gray-50 active:bg-gray-100 transition-colors">
+            <i class="fa-solid fa-phone text-xl mb-1"></i>
+            <span class="text-[11px] font-medium mt-0.5">一键拨打</span>
+        </a>
+        <div class="w-px h-8 bg-gray-200"></div>
+        <a href="#contact" class="flex-1 py-3 flex flex-col items-center justify-center text-green-600 hover:bg-gray-50 active:bg-gray-100 transition-colors">
+            <i class="fa-brands fa-weixin text-xl mb-1"></i>
+            <span class="text-[11px] font-medium mt-0.5">微信咨询</span>
+        </a>
+        <a href="#contact" class="flex-none w-32 bg-primary text-white py-3.5 flex flex-col items-center justify-center shadow-lg active:bg-primary/90 transition-colors h-full">
+            <i class="fa-solid fa-pen-to-square text-lg mb-0.5"></i>
+            <span class="font-bold text-[13px]">在线留言</span>
+        </a>
+    </div>
 
     <!-- 交互脚本 -->
     <script>
