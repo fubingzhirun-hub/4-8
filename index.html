@@ -22,7 +22,7 @@
                     colors: {
                         primary: '#1A2E44', // 律政深蓝
                         secondary: '#D4AF37', // 香槟金
-                        light: '#F8F9FA',
+                        light: '#F2F5F8', // 加深浅色背景以增加板块区分度
                         dark: '#2C3E50'
                     },
                     fontFamily: {
@@ -119,7 +119,7 @@
     </header>
 
     <!-- 首屏：个人简介与核心信息融合 (Profile & Hero) -->
-    <section id="profile" class="pt-24 lg:pt-32 pb-16 lg:pb-20 bg-gradient-to-b from-light to-white relative overflow-hidden">
+    <section id="profile" class="pt-24 lg:pt-32 pb-10 md:pb-16 bg-white relative overflow-hidden border-b border-gray-100">
         <!-- 装饰性背景元素 -->
         <div class="absolute top-0 right-0 -mr-20 -mt-20 w-96 h-96 rounded-full bg-secondary/5 blur-3xl pointer-events-none"></div>
         <div class="absolute bottom-0 left-0 -ml-20 -mb-20 w-80 h-80 rounded-full bg-primary/5 blur-3xl pointer-events-none"></div>
@@ -176,9 +176,9 @@
     </section>
 
     <!-- 业务领域 (Services) -->
-    <section id="services" class="py-16 lg:py-20 bg-light">
+    <section id="services" class="py-10 md:py-16 bg-light border-b border-gray-200">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-3xl mx-auto mb-10 reveal">
+            <div class="text-center max-w-3xl mx-auto mb-8 md:mb-12 reveal">
                 <h2 class="font-serif text-3xl md:text-4xl font-bold text-primary mb-4">核心业务领域</h2>
                 <div class="w-16 h-1 bg-secondary mx-auto"></div>
             </div>
@@ -224,10 +224,10 @@
     </section>
 
     <!-- 荣誉资质 (Honors) -->
-    <section id="honors" class="py-16 lg:py-20 bg-primary text-white">
+    <section id="honors" class="py-10 md:py-16 bg-primary text-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex flex-col md:flex-row items-center gap-12">
-                <div class="md:w-1/3 reveal mb-4 md:mb-0">
+            <div class="flex flex-col md:flex-row items-center gap-8 md:gap-12">
+                <div class="md:w-1/3 reveal mb-8 md:mb-0">
                     <h2 class="font-serif text-3xl md:text-4xl font-bold mb-4">荣誉与资质</h2>
                     <div class="w-16 h-1 bg-secondary"></div>
                 </div>
@@ -279,14 +279,14 @@
     </section>
 
     <!-- 案例分享 (Cases) -->
-    <section id="cases" class="py-16 lg:py-20 bg-white">
+    <section id="cases" class="py-10 md:py-16 bg-white border-b border-gray-100">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-3xl mx-auto mb-10 reveal">
+            <div class="text-center max-w-3xl mx-auto mb-8 md:mb-12 reveal">
                 <h2 class="font-serif text-3xl md:text-4xl font-bold text-primary mb-4">经典案例分享</h2>
                 <div class="w-16 h-1 bg-secondary mx-auto"></div>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
                 <!-- 案例 1 -->
                 <div class="border border-gray-200 rounded-xl overflow-hidden hover:shadow-2xl transition-all duration-300 group reveal">
                     <div class="h-48 bg-gray-200 relative overflow-hidden">
@@ -342,38 +342,45 @@
     </section>
 
     <!-- 联系方式 (Contact) -->
-    <section id="contact" class="py-16 lg:py-20 bg-light relative">
+    <section id="contact" class="py-10 md:py-16 bg-light relative">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <!-- 新增的过渡标题区域 -->
-            <div class="text-center max-w-3xl mx-auto mb-10 reveal">
+            <div class="text-center max-w-3xl mx-auto mb-8 md:mb-12 reveal">
                 <h2 class="font-serif text-3xl md:text-4xl font-bold text-primary mb-4">联系方式</h2>
                 <div class="w-16 h-1 bg-secondary mx-auto"></div>
             </div>
 
-            <!-- 重新设计的独立联系信息卡片 (移除了留言表单区，改为居中排版) -->
+            <!-- 重新设计的独立联系信息卡片 -->
             <div class="max-w-4xl mx-auto bg-primary rounded-3xl shadow-xl overflow-hidden reveal delay-100">
                 <div class="p-8 sm:p-10 lg:p-14 flex flex-col md:flex-row items-center justify-between gap-10">
                     <!-- 左侧：联系方式文字信息 -->
                     <div class="w-full md:w-3/5 space-y-8 text-white">
                         <div class="flex items-start">
-                            <i class="fa-solid fa-location-dot text-secondary text-2xl mt-1 w-10"></i>
+                            <i class="fa-solid fa-location-dot text-secondary text-2xl mt-1 w-10 text-center flex-shrink-0"></i>
                             <div>
                                 <h4 class="font-bold text-lg mb-2">办公地址</h4>
-                                <p class="text-gray-300 leading-relaxed">北京市朝阳区建国门外大街1号<br>某知名律师事务所 45层</p>
+                                <!-- 修改为可点击的交互组 -->
+                                <div class="group cursor-pointer inline-block" onclick="openMapModal()">
+                                    <p class="text-gray-300 leading-relaxed group-hover:text-white transition-all">
+                                        陕西省西安市经济技术开发区凤城二路10号经发大厦A座16楼1604-2室
+                                    </p>
+                                    <p class="text-secondary text-sm mt-1.5 flex items-center font-medium">
+                                        <i class="fa-solid fa-map-location-dot mr-1.5"></i> 点击查看地图
+                                    </p>
+                                </div>
                             </div>
                         </div>
                         
                         <div class="flex items-start">
-                            <i class="fa-solid fa-phone text-secondary text-2xl mt-1 w-10"></i>
+                            <i class="fa-solid fa-phone text-secondary text-2xl mt-1 w-10 text-center flex-shrink-0"></i>
                             <div>
                                 <h4 class="font-bold text-lg mb-2">咨询热线</h4>
-                                <p class="text-gray-300">400-888-8888 <span class="text-sm text-gray-400 ml-2">(工作日 9:00-18:00)</span></p>
-                                <p class="text-gray-300 mt-1">138-xxxx-xxxx <span class="text-sm text-gray-400 ml-2">(紧急联系)</span></p>
+                                <p class="text-gray-300">15686189666 <span class="text-sm text-gray-400 ml-2">(全天候接听)</span></p>
                             </div>
                         </div>
 
                         <div class="flex items-start">
-                            <i class="fa-solid fa-envelope text-secondary text-2xl mt-1 w-10"></i>
+                            <i class="fa-solid fa-envelope text-secondary text-2xl mt-1 w-10 text-center flex-shrink-0"></i>
                             <div>
                                 <h4 class="font-bold text-lg mb-2">电子邮箱</h4>
                                 <p class="text-gray-300">liujing.lawyer@example.com</p>
@@ -391,17 +398,13 @@
                     </div>
                 </div>
             </div>
+            
         </div>
     </section>
 
     <!-- 页脚 -->
     <footer class="bg-dark text-gray-400 py-10 pb-28 md:pb-10 text-center border-t border-gray-800">
         <div class="max-w-7xl mx-auto px-4">
-            <div class="flex justify-center space-x-6 mb-6">
-                <a href="#" aria-label="微信" class="text-gray-400 hover:text-white transition-colors"><i class="fa-brands fa-weixin text-xl"></i></a>
-                <a href="#" aria-label="微博" class="text-gray-400 hover:text-white transition-colors"><i class="fa-brands fa-weibo text-xl"></i></a>
-                <a href="#" aria-label="领英" class="text-gray-400 hover:text-white transition-colors"><i class="fa-brands fa-linkedin text-xl"></i></a>
-            </div>
             <p class="mb-2">© 2026 刘静律师. All Rights Reserved.</p>
             <p class="text-sm">法律声明 | 隐私政策 | 京ICP备12345678号-1</p>
         </div>
@@ -520,9 +523,47 @@
         </div>
     </div>
 
+    <!-- 地图位置弹窗 (Map Modal) -->
+    <div id="map-modal" class="fixed inset-0 z-[90] hidden opacity-0 transition-opacity duration-300">
+        <!-- 遮罩层 -->
+        <div class="absolute inset-0 bg-black/70 backdrop-blur-sm" onclick="closeMapModal()"></div>
+        <!-- 弹窗内容 -->
+        <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white rounded-2xl shadow-2xl p-4 md:p-6 w-11/12 max-w-3xl flex flex-col">
+            <div class="flex justify-between items-center mb-4">
+                <h3 class="font-serif text-xl font-bold text-primary">律所具体位置</h3>
+                <button aria-label="关闭弹窗" onclick="closeMapModal()" class="text-gray-400 hover:text-gray-600 focus:outline-none bg-gray-100 hover:bg-gray-200 rounded-full w-8 h-8 flex items-center justify-center transition-colors">
+                    <i class="fa-solid fa-xmark text-lg"></i>
+                </button>
+            </div>
+            
+            <!-- 地图框架 -->
+            <div class="w-full h-64 md:h-96 bg-gray-200 rounded-xl overflow-hidden relative border border-gray-100">
+                <!-- 这里的 iframe 也可以替换为您真实的百度/高德地图嵌入代码 -->
+                <iframe src="https://map.baidu.com/search/%E8%A5%BF%E5%AE%89%E5%B8%82%E5%87%A4%E5%9F%8E%E4%BA%8C%E8%B7%AF10%E5%8F%B7%E7%BB%8F%E5%8F%91%E5%A4%A7%E5%8E%A6/?querytype=s&wd=%E8%A5%BF%E5%AE%89%E5%B8%82%E5%87%A4%E5%9F%8E%E4%BA%8C%E8%B7%AF10%E5%8F%B7%E7%BB%8F%E5%8F%91%E5%A4%A7%E5%8E%A6" width="100%" height="100%" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+            </div>
+            
+            <!-- 底部地址栏和一键导航 -->
+            <div class="mt-4 flex flex-col sm:flex-row justify-between items-center gap-4">
+                <p class="text-sm text-gray-600 font-medium"><i class="fa-solid fa-location-dot text-secondary mr-1"></i> 西安市凤城二路10号经发大厦A座</p>
+                <!-- 多平台导航按钮组 -->
+                <div class="flex gap-2 w-full sm:w-auto">
+                    <a href="https://uri.amap.com/marker?position=108.9463,34.3184&name=刘静律师办公室&content=陕西省西安市经济技术开发区凤城二路10号经发大厦A座16楼1604-2室" target="_blank" rel="noopener noreferrer" class="flex-1 sm:flex-none bg-primary text-white px-3 sm:px-4 py-2.5 rounded-lg text-xs hover:bg-secondary transition-colors duration-300 text-center font-bold shadow-sm flex items-center justify-center">
+                        高德地图
+                    </a>
+                    <a href="http://api.map.baidu.com/marker?location=34.3184,108.9463&title=刘静律师办公室&content=陕西省西安市经济技术开发区凤城二路10号经发大厦A座16楼1604-2室&output=html" target="_blank" rel="noopener noreferrer" class="flex-1 sm:flex-none bg-primary text-white px-3 sm:px-4 py-2.5 rounded-lg text-xs hover:bg-secondary transition-colors duration-300 text-center font-bold shadow-sm flex items-center justify-center">
+                        百度地图
+                    </a>
+                    <a href="https://apis.map.qq.com/uri/v1/marker?marker=coord:34.3184,108.9463;title:刘静律师办公室;addr:陕西省西安市经济技术开发区凤城二路10号经发大厦A座16楼1604-2室&referer=lawyer_site" target="_blank" rel="noopener noreferrer" class="flex-1 sm:flex-none bg-primary text-white px-3 sm:px-4 py-2.5 rounded-lg text-xs hover:bg-secondary transition-colors duration-300 text-center font-bold shadow-sm flex items-center justify-center">
+                        腾讯地图
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- 移动端底部悬浮操作栏 (Mobile Sticky CTA) -->
     <div class="md:hidden fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 shadow-[0_-5px_15px_rgba(0,0,0,0.05)] z-50 flex pb-safe items-center">
-        <a href="tel:4008888888" class="flex-1 py-3 flex flex-col items-center justify-center text-primary hover:bg-gray-50 active:bg-gray-100 transition-colors">
+        <a href="tel:15686189666" class="flex-1 py-3 flex flex-col items-center justify-center text-primary hover:bg-gray-50 active:bg-gray-100 transition-colors">
             <i class="fa-solid fa-phone text-xl mb-1"></i>
             <span class="text-[11px] font-medium mt-0.5">一键拨打</span>
         </a>
@@ -744,6 +785,25 @@
                 caseModal.classList.add('hidden');
                 // 清空内容避免下次打开时闪烁旧内容
                 document.getElementById('case-modal-content').innerHTML = '';
+            }, 300);
+        }
+
+        // --- 新增：地图弹窗逻辑 ---
+        const mapModal = document.getElementById('map-modal');
+
+        function openMapModal() {
+            mapModal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden'; 
+            setTimeout(() => {
+                mapModal.classList.remove('opacity-0');
+            }, 10);
+        }
+
+        function closeMapModal() {
+            mapModal.classList.add('opacity-0');
+            document.body.style.overflow = '';
+            setTimeout(() => {
+                mapModal.classList.add('hidden');
             }, 300);
         }
 
